@@ -2,51 +2,43 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   FolderKanbanIcon,
-  BellIcon,
-  BarChart3Icon,
-  ShieldCheckIcon,
-  ZapIcon,
-  UsersIcon } from
+  BookOpenIcon,
+  LineChartIcon,
+  SearchIcon,
+  PieChartIcon } from
 'lucide-react';
-const features = [
-{
-  icon: <FolderKanbanIcon className="w-6 h-6" />,
-  title: 'Gestión de Casos',
-  description:
-  'Organiza todos tus casos en un solo lugar con flujos de trabajo personalizados.'
-},
-{
-  icon: <BellIcon className="w-6 h-6" />,
-  title: 'Alertas Inteligentes',
-  description:
-  'Nunca pierdas un plazo. Alertas automáticas para fechas críticas y vencimientos.'
-},
-{
-  icon: <BarChart3Icon className="w-6 h-6" />,
-  title: 'Analytics & Reportes',
-  description:
-  'Dashboards en tiempo real para entender el estado de tu práctica.'
-},
-{
-  icon: <ShieldCheckIcon className="w-6 h-6" />,
-  title: 'Cumplimiento',
-  description:
-  'Asegura que todos los procesos se sigan correctamente, sin excepciones.'
-},
-{
-  icon: <ZapIcon className="w-6 h-6" />,
-  title: 'Automatización',
-  description:
-  'Automatiza tareas repetitivas y enfócate en lo que realmente importa.'
-},
-{
-  icon: <UsersIcon className="w-6 h-6" />,
-  title: 'Colaboración',
-  description:
-  'Trabaja en equipo con asignaciones claras y comunicación centralizada.'
-}];
-
+import { useLanguage } from '../context/LanguageContext';
 export function Features() {
+  const { t } = useLanguage();
+  const informationFeatures = [
+  {
+    icon: <FolderKanbanIcon className="w-5 h-5" />,
+    title: t.features.caseManagement,
+    description: t.features.caseManagementDesc
+  },
+  {
+    icon: <BookOpenIcon className="w-5 h-5" />,
+    title: t.features.legalInformation,
+    description: t.features.legalInformationDesc
+  },
+  {
+    icon: <LineChartIcon className="w-5 h-5" />,
+    title: t.features.predictiveInformation,
+    description: t.features.predictiveInformationDesc
+  }];
+
+  const financingFeatures = [
+  {
+    icon: <SearchIcon className="w-5 h-5" />,
+    title: t.features.caseScreening,
+    description: t.features.caseScreeningDesc
+  },
+  {
+    icon: <PieChartIcon className="w-5 h-5" />,
+    title: t.features.analysis,
+    description: t.features.analysisDesc
+  }];
+
   return (
     <section
       id="features"
@@ -55,80 +47,100 @@ export function Features() {
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0D6B6E] opacity-[0.03] blur-[150px] rounded-full" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#14b8a6] opacity-[0.02] blur-[100px] rounded-full" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        {/* Section header */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 30
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0
-          }}
-          viewport={{
-            once: true,
-            margin: '-100px'
-          }}
-          transition={{
-            duration: 0.6
-          }}
-          className="text-center mb-20">
-
-          <p className="text-xs text-[#0D6B6E] uppercase tracking-[0.2em] mb-4">
-            Features
-          </p>
-          <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6">
-            Todo lo que necesitas
-          </h2>
-          <p className="text-gray-500 max-w-xl mx-auto text-lg">
-            Herramientas diseñadas específicamente para equipos legales que
-            manejan casos complejos.
-          </p>
-        </motion.div>
-
-        {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) =>
-          <motion.article
-            key={index}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Access to Information Column */}
+          <motion.div
             initial={{
               opacity: 0,
-              y: 20
+              x: -20
             }}
             whileInView={{
               opacity: 1,
-              y: 0
+              x: 0
             }}
             viewport={{
               once: true
             }}
             transition={{
-              duration: 0.5,
-              delay: index * 0.1
+              duration: 0.6
+            }}>
+
+            <h2 className="text-3xl font-semibold text-white mb-8 flex items-center gap-3">
+              <span className="w-2 h-8 bg-[#0D6B6E] rounded-full" />
+              {t.features.accessToInformation}
+            </h2>
+            <div className="space-y-6">
+              {informationFeatures.map((feature, index) =>
+              <div
+                key={index}
+                className="group p-6 rounded-xl bg-[#161616] border border-[#1a1a1a] hover:border-[#0D6B6E]/30 transition-all duration-300">
+
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-[#0D6B6E]/10 text-[#0D6B6E] group-hover:bg-[#0D6B6E]/20 transition-colors">
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium text-white mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </motion.div>
+
+          {/* Access to Financing Column */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: 20
             }}
-            className="group relative p-8 rounded-2xl bg-[#161616]/50 border border-[#1a1a1a] hover:border-[#0D6B6E]/30 transition-all duration-500">
+            whileInView={{
+              opacity: 1,
+              x: 0
+            }}
+            viewport={{
+              once: true
+            }}
+            transition={{
+              duration: 0.6,
+              delay: 0.2
+            }}>
 
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-[#0D6B6E]/10 flex items-center justify-center text-[#0D6B6E] mb-6 group-hover:bg-[#0D6B6E]/20 transition-colors duration-500">
-                {feature.icon}
-              </div>
+            <h2 className="text-3xl font-semibold text-white mb-8 flex items-center gap-3">
+              <span className="w-2 h-8 bg-[#0D6B6E] rounded-full" />
+              {t.features.accessToFinancing}
+            </h2>
+            <div className="space-y-6">
+              {financingFeatures.map((feature, index) =>
+              <div
+                key={index}
+                className="group p-6 rounded-xl bg-[#161616] border border-[#1a1a1a] hover:border-[#0D6B6E]/30 transition-all duration-300">
 
-              {/* Content */}
-              <h3 className="text-xl font-medium text-white mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-500 leading-relaxed">
-                {feature.description}
-              </p>
-
-              {/* Hover glow */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#0D6B6E]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-            </motion.article>
-          )}
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-[#0D6B6E]/10 text-[#0D6B6E] group-hover:bg-[#0D6B6E]/20 transition-colors">
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium text-white mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>);

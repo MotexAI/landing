@@ -1,7 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { LinkedinIcon, TwitterIcon } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+
 export function Footer() {
+  const { t } = useLanguage();
+  const location = useLocation();
+  
+  // Get language prefix from URL
+  const getLangPrefix = () => {
+    const path = location.pathname;
+    if (path.startsWith('/en')) return '/en';
+    if (path.startsWith('/es')) return '/es';
+    return '/es'; // Default to Spanish
+  };
+
+  const langPrefix = getLangPrefix();
   return (
     <footer className="bg-[#0A0A0A] border-t border-[#1a1a1a]/50">
       <div className="max-w-6xl mx-auto px-6 py-16">
@@ -11,7 +25,7 @@ export function Footer() {
             <Link
               to="/"
               className="flex items-center gap-2.5 mb-4"
-              aria-label="Motex inicio">
+              aria-label="Motex home">
 
               <img
                 src="/vercel.svg"
@@ -20,33 +34,34 @@ export function Footer() {
 
               <span className="text-base font-semibold text-white">Motex</span>
             </Link>
-            <p className="text-sm text-gray-600 max-w-xs">
-              Infraestructura legal moderna para equipos de litigio.
-            </p>
+            <p className="text-sm text-gray-600 max-w-xs">{t.footer.tagline}</p>
           </div>
 
           {/* Links */}
-          <div className="flex flex-wrap items-center gap-x-10 gap-y-3 text-sm text-gray-500">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-gray-500">
             <Link
               to="/#features"
               className="hover:text-white transition-colors">
 
-              Features
+              {t.nav.features}
+            </Link>
+            <Link to="/stories" className="hover:text-white transition-colors">
+              {t.nav.stories}
             </Link>
             <Link
-              to="/#plataforma"
+              to="/information"
               className="hover:text-white transition-colors">
 
-              Plataforma
+              {t.nav.information}
             </Link>
-            <Link to="/nosotros" className="hover:text-white transition-colors">
-              Nosotros
+            <Link
+              to="/financing"
+              className="hover:text-white transition-colors">
+
+              {t.nav.financing}
             </Link>
-            <Link to="/etica" className="hover:text-white transition-colors">
-              Ética
-            </Link>
-            <Link to="/contacto" className="hover:text-white transition-colors">
-              Contacto
+            <Link to="/contact" className="hover:text-white transition-colors">
+              {t.nav.contact}
             </Link>
           </div>
 
@@ -76,21 +91,18 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-[#1a1a1a]/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-600">
           <p>
-            © {new Date().getFullYear()} Motex. Todos los derechos reservados.
+            © {new Date().getFullYear()} Motex. {t.footer.copyright}
           </p>
           <div className="flex items-center gap-8">
-            <a
-              href="#privacidad"
+            <Link
+              to={`${langPrefix}/privacy`}
               className="hover:text-gray-400 transition-colors">
 
-              Privacidad
-            </a>
-            <a
-              href="#terminos"
-              className="hover:text-gray-400 transition-colors">
-
-              Términos
-            </a>
+              {t.footer.privacy}
+            </Link>
+            <Link to={`${langPrefix}/terms`} className="hover:text-gray-400 transition-colors">
+              {t.footer.terms}
+            </Link>
           </div>
         </div>
       </div>

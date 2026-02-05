@@ -1,135 +1,151 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeftIcon, MailIcon, ArrowRightIcon } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { SendIcon, CheckIcon, AlertCircleIcon } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { trackFormSubmit } from '../utils/amplitude';
+
 export function ContactPage() {
+  const { t } = useLanguage();
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email || !email.includes('@')) {
+      setStatus('error');
+      return;
+    }
+
+    setIsLoading(true);
+    setStatus('idle');
+
+    try {
+      const response = await fetch('https://motex.app.n8n.cloud/webhook/68cca297-8b46-4a2a-bb85-7026377b00f2', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email
+        })
+      });
+
+      // Check if response is ok (status 200-299)
+      if (response.ok) {
+        trackFormSubmit('Contact Form', { email, success: true });
+        setStatus('success');
+        setEmail('');
+      } else {
+        // Try to get error message from response
+        try {
+          const errorData = await response.text();
+          console.error('Server error response:', errorData);
+          console.error('Response status:', response.status);
+        } catch (e) {
+          console.error('Error parsing response:', e);
+        }
+        trackFormSubmit('Contact Form', { email, success: false, error: 'server_error' });
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('Error sending contact form:', error);
+      trackFormSubmit('Contact Form', { email, success: false, error: 'network_error' });
+      setStatus('error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
       <Header />
-      <main className="pt-24">
-        <section className="py-32 relative overflow-hidden">
-          {/* Background */}
-          <div className="absolute inset-0">
-            <motion.div
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.05, 0.08, 0.05]
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#0D6B6E] blur-[150px] rounded-full" />
+      <main className="pt-32 pb-20 flex flex-col justify-center min-h-[80vh]">
+        <div className="max-w-xl mx-auto px-6 w-full">
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 30
+            }}
+            animate={{
+              opacity: 1,
+              y: 0
+            }}
+            transition={{
+              duration: 0.6
+            }}
+            className="text-center">
 
-          </div>
+            <p className="text-xs text-[#0D6B6E] uppercase tracking-[0.2em] mb-6">
+              {t.contact.title}
+            </p>
 
-          <div className="max-w-3xl mx-auto px-6 relative z-10">
-            {/* Back link */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 20
-              }}
-              animate={{
-                opacity: 1,
-                y: 0
-              }}
-              transition={{
-                duration: 0.5
-              }}>
+            <h1 className="text-4xl md:text-5xl font-semibold text-white mb-6">
+              {t.contact.headline}
+            </h1>
 
-              <Link
-                to="/"
-                className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-white transition-colors mb-16">
+            <p className="text-lg text-gray-400 mb-12">{t.contact.subtitle}</p>
 
-                <ArrowLeftIcon className="w-4 h-4" />
-                Volver al inicio
-              </Link>
-            </motion.div>
+            <form className="w-full" onSubmit={handleSubmit}>
+              <div className="flex flex-col gap-4">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t.contact.placeholder}
+                  className="w-full bg-[#161616] border border-[#262626] rounded-xl px-6 py-4 text-white text-lg placeholder-gray-600 focus:outline-none focus:border-[#0D6B6E] focus:ring-1 focus:ring-[#0D6B6E] transition-all"
+                  autoFocus
+                  disabled={isLoading}
+                  required />
 
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 30
-              }}
-              animate={{
-                opacity: 1,
-                y: 0
-              }}
-              transition={{
-                duration: 0.6,
-                delay: 0.1
-              }}
-              className="text-center">
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-[#0D6B6E] hover:bg-[#0a5a5c] disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium text-lg px-6 py-4 rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(13,107,110,0.3)] flex items-center justify-center gap-2">
 
-              <p className="text-xs text-[#0D6B6E] uppercase tracking-[0.2em] mb-6">
-                Contacto
-              </p>
-
-              <h1 className="text-5xl md:text-6xl font-semibold text-white mb-8 leading-tight">
-                Hablemos
-              </h1>
-
-              <p className="text-lg text-gray-400 max-w-xl mx-auto mb-16 leading-relaxed">
-                Ya sea que estés explorando soluciones de gestión de casos,
-                tengas curiosidad sobre nuestro enfoque, o simplemente quieras
-                entender si Motex podría ser adecuado para tu equipo.
-              </p>
-
-              {/* Main CTA */}
-              <a
-                href="mailto:contact@motex.ai"
-                className="group inline-flex items-center gap-4 px-10 py-5 bg-[#0D6B6E] hover:bg-[#0a5a5c] text-white font-medium rounded-xl transition-all duration-300 hover:shadow-[0_0_50px_rgba(13,107,110,0.4)] mb-16">
-
-                <MailIcon className="w-5 h-5" />
-                contact@motex.ai
-                <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
-
-              {/* Additional contacts */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                <a
-                  href="mailto:careers@motex.ai"
-                  className="p-6 rounded-xl bg-[#111111] border border-[#1a1a1a] hover:border-[#0D6B6E]/20 transition-all duration-500 text-left group">
-
-                  <h3 className="text-white font-medium mb-2 group-hover:text-[#0D6B6E] transition-colors">
-                    Carreras
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-3">
-                    Para oportunidades de trabajo
-                  </p>
-                  <span className="text-sm text-[#0D6B6E]">
-                    careers@motex.ai
-                  </span>
-                </a>
-
-                <a
-                  href="mailto:press@motex.ai"
-                  className="p-6 rounded-xl bg-[#111111] border border-[#1a1a1a] hover:border-[#0D6B6E]/20 transition-all duration-500 text-left group">
-
-                  <h3 className="text-white font-medium mb-2 group-hover:text-[#0D6B6E] transition-colors">
-                    Prensa
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-3">
-                    Para consultas de medios
-                  </p>
-                  <span className="text-sm text-[#0D6B6E]">press@motex.ai</span>
-                </a>
+                  {isLoading ? (
+                    <>
+                      <span className="animate-spin">⏳</span> Enviando...
+                    </>
+                  ) : status === 'success' ? (
+                    <>
+                      <CheckIcon className="w-5 h-5" /> Enviado
+                    </>
+                  ) : (
+                    <>
+                      {t.contact.submit} <SendIcon className="w-5 h-5" />
+                    </>
+                  )}
+                </button>
               </div>
+              
+              {status === 'success' && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-sm text-[#0D6B6E] mt-4">
+                  ¡Gracias! Te contactaremos pronto.
+                </motion.p>
+              )}
+              
+              {status === 'error' && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-sm text-red-500 mt-4 flex items-center justify-center gap-2">
+                  <AlertCircleIcon className="w-4 h-4" />
+                  Hubo un error. Por favor intenta de nuevo.
+                </motion.p>
+              )}
 
-              {/* Note */}
-              <p className="text-sm text-gray-600 mt-16">
-                Sin presión. Sin seguimientos agresivos. Solo una conversación
-                directa sobre lo que necesitas.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+              <p className="text-xs text-gray-600 mt-6">{t.contact.privacy}</p>
+            </form>
+          </motion.div>
+        </div>
       </main>
       <Footer />
     </div>);
-
 }

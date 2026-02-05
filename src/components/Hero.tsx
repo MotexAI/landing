@@ -1,8 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { trackButtonClick } from '../utils/amplitude';
+
 export function Hero() {
+  const { t } = useLanguage();
+  const location = useLocation();
+  
+  // Get language prefix from URL
+  const getLangPrefix = () => {
+    const path = location.pathname;
+    if (path.startsWith('/en')) return '/en';
+    if (path.startsWith('/es')) return '/es';
+    return '/es'; // Default to Spanish
+  };
+
+  const langPrefix = getLangPrefix();
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Dynamic background */}
@@ -98,43 +113,81 @@ export function Hero() {
 
             <span className="w-2 h-2 rounded-full bg-[#0D6B6E] animate-pulse" />
             <span className="text-sm text-gray-400 uppercase tracking-wider">
-              Case Management para Litigio
+              {t.hero.eyebrow}
             </span>
           </motion.div>
 
           {/* Headline */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-white leading-[0.95] tracking-tight mb-8">
-            <span className="block">Control total.</span>
-            <span className="block text-gray-500">Visibilidad completa.</span>
+            {t.hero.headline}{' '}
+            <span className="text-gray-500 whitespace-nowrap">{t.hero.subtitle}</span>
           </h1>
-
-          {/* Subheadline */}
-          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-14 leading-relaxed">
-            El crecimiento en litigio trae complejidad. Motex da a los equipos
-            legales la infraestructura para escalar sin perder el control.
-          </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              to="/contacto"
+              to={`${langPrefix}/contact`}
+              onClick={() => trackButtonClick('Try Demo', { location: 'hero', language })}
               className="group flex items-center gap-3 px-8 py-4 bg-[#0D6B6E] hover:bg-[#0a5a5c] text-white font-medium rounded-lg transition-all duration-300 hover:shadow-[0_0_50px_rgba(13,107,110,0.4)]">
 
-              Solicitar Demo
+              {t.nav.tryDemo}
               <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <a
-              href="#features"
+              href={`${langPrefix}/#features`}
+              onClick={(e) => {
+                e.preventDefault();
+                trackButtonClick('View Features', { location: 'hero', language });
+                const element = document.getElementById('features');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="px-8 py-4 text-gray-400 hover:text-white font-medium transition-colors border border-transparent hover:border-[#262626] rounded-lg">
 
-              Ver Features
+              {t.hero.viewFeatures}
             </a>
           </div>
+
+          {/* Backed by */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20
+            }}
+            animate={{
+              opacity: 1,
+              y: 0
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.6
+            }}
+            className="mt-20 pt-12 border-t border-[#1a1a1a]/30">
+            <p className="text-xs text-gray-500 uppercase tracking-[0.2em] mb-8">
+              {t.trustedBy.title}
+            </p>
+            <motion.div
+              initial={{
+                opacity: 0
+              }}
+              animate={{
+                opacity: 1
+              }}
+              transition={{
+                duration: 0.6,
+                delay: 0.8
+              }}
+              className="flex items-center justify-center">
+              <img
+                src="/hbs.webp"
+                alt="Backed by HBS"
+                className="h-16 md:h-20 object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+              />
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
 
       {/* Bottom gradient line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0D6B6E]/50 to-transparent" />
     </section>);
-
 }
