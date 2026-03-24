@@ -1,22 +1,13 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { trackButtonClick } from '../utils/amplitude';
+import { CaseChat } from './CaseChat';
 
 export function Hero() {
-  const { t } = useLanguage();
-  const location = useLocation();
-  
-  // Get language prefix from URL
-  const getLangPrefix = () => {
-    const path = location.pathname;
-    if (path.startsWith('/en')) return '/en';
-    if (path.startsWith('/es')) return '/es';
-    return '/es'; // Default to Spanish
-  };
-
-  const langPrefix = getLangPrefix();
+  const { t, language } = useLanguage();
+  const [isChatOpen, setIsChatOpen] = useState(false);
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -95,99 +86,33 @@ export function Hero() {
           }}
           className="text-center">
 
-          {/* Eyebrow */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 20
-            }}
-            animate={{
-              opacity: 1,
-              y: 0
-            }}
-            transition={{
-              duration: 0.6,
-              delay: 0.2
-            }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#1a1a1a] bg-[#111111]/50 backdrop-blur-sm mb-10">
-
-            <span className="w-2 h-2 rounded-full bg-[#0D6B6E] animate-pulse" />
-            <span className="text-sm text-gray-400 uppercase tracking-wider">
-              {t.hero.eyebrow}
-            </span>
-          </motion.div>
-
           {/* Headline */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-white leading-[0.95] tracking-tight mb-8">
             {t.hero.headline}{' '}
             <span className="text-gray-500 whitespace-nowrap">{t.hero.subtitle}</span>
           </h1>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to={`${langPrefix}/contact`}
-              onClick={() => trackButtonClick('Try Demo', { location: 'hero', language })}
+          {/* CTA */}
+          <div className="flex items-center justify-center">
+            <button
+              onClick={() => {
+                trackButtonClick('Tengo un caso', { location: 'hero', language });
+                setIsChatOpen(true);
+              }}
               className="group flex items-center gap-3 px-8 py-4 bg-[#0D6B6E] hover:bg-[#0a5a5c] text-white font-medium rounded-lg transition-all duration-300 hover:shadow-[0_0_50px_rgba(13,107,110,0.4)]">
 
-              {t.nav.tryDemo}
+              {t.hero.caseButton}
               <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <a
-              href={`${langPrefix}/#features`}
-              onClick={(e) => {
-                e.preventDefault();
-                trackButtonClick('View Features', { location: 'hero', language });
-                const element = document.getElementById('features');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="px-8 py-4 text-gray-400 hover:text-white font-medium transition-colors border border-transparent hover:border-[#262626] rounded-lg">
-
-              {t.hero.viewFeatures}
-            </a>
+            </button>
           </div>
 
-          {/* Backed by */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 20
-            }}
-            animate={{
-              opacity: 1,
-              y: 0
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.6
-            }}
-            className="mt-20 pt-12 border-t border-[#1a1a1a]/30">
-            <p className="text-xs text-gray-500 uppercase tracking-[0.2em] mb-8">
-              {t.trustedBy.title}
-            </p>
-            <motion.div
-              initial={{
-                opacity: 0
-              }}
-              animate={{
-                opacity: 1
-              }}
-              transition={{
-                duration: 0.6,
-                delay: 0.8
-              }}
-              className="flex items-center justify-center">
-              <img
-                src="/hbs.webp"
-                alt="Backed by HBS"
-                className="h-16 md:h-20 object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
-              />
-            </motion.div>
-          </motion.div>
         </motion.div>
       </div>
 
       {/* Bottom gradient line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0D6B6E]/50 to-transparent" />
+
+      {/* Case Chat Modal */}
+      <CaseChat isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </section>);
 }

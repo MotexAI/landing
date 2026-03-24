@@ -1,12 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { ArrowRightIcon } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { CaseChat } from '../components/CaseChat';
 export function FinancingPage() {
   const { t } = useLanguage();
+  const [isChatOpen, setIsChatOpen] = useState(false);
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
       <Header />
@@ -54,17 +55,18 @@ export function FinancingPage() {
               {t.financing.subtitle}
             </p>
 
-            <Link
-              to="/contact"
+            <button
+              onClick={() => setIsChatOpen(true)}
               className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0D6B6E] hover:bg-[#0a5a5c] text-white text-lg font-medium rounded-xl transition-all duration-300 hover:shadow-[0_0_50px_rgba(13,107,110,0.4)]">
 
               {t.financing.submitCase}
               <ArrowRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </Link>
+            </button>
           </motion.div>
         </div>
       </main>
       <Footer />
+      <CaseChat isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </div>);
 
 }
