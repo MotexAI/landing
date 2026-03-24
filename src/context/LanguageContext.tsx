@@ -14,10 +14,29 @@ interface Translations {
   };
   // Hero
   hero: {
-    eyebrow: string;
     headline: string;
     subtitle: string;
     viewFeatures: string;
+    caseButton: string;
+  };
+  // Case Chat
+  caseChat: {
+    title: string;
+    steps: string[];
+    welcomeMessage: string;
+    askEvidence: string;
+    askMoreDetails: string;
+    placeholder: string;
+    attachFile: string;
+    submitCase: string;
+    emailTitle: string;
+    emailSubtitle: string;
+    emailPlaceholder: string;
+    emailError: string;
+    back: string;
+    successTitle: string;
+    successMessage: string;
+    close: string;
   };
   // Features
   features: {
@@ -182,10 +201,28 @@ const translations: Record<Language, Translations> = {
       closeMenu: 'Close menu'
     },
     hero: {
-      eyebrow: 'Case Solver for litigants',
       headline: 'Accelerating Dispute',
       subtitle: 'Resolution',
-      viewFeatures: 'View Features'
+      viewFeatures: 'View Features',
+      caseButton: 'I have a case'
+    },
+    caseChat: {
+      title: 'Submit Your Case',
+      steps: ['Submit your case', 'Attach evidence', 'We quote with lawyers', 'We finance and resolve'],
+      welcomeMessage: 'Tell us about your case',
+      askEvidence: 'Thank you for the details. Could you attach any evidence or relevant documents? You can also share more details about the situation.',
+      askMoreDetails: 'Thank you. Is there any additional information or documents you would like to add?',
+      placeholder: 'Type your message...',
+      attachFile: 'Attach file',
+      submitCase: 'Submit case',
+      emailTitle: 'Your contact email',
+      emailSubtitle: 'Enter your email so we can get back to you about your case.',
+      emailPlaceholder: 'name@company.com',
+      emailError: 'Please enter a valid email address.',
+      back: 'Go back',
+      successTitle: 'Case submitted!',
+      successMessage: 'We have received your case. Our team will review it and contact you soon.',
+      close: 'Close'
     },
     features: {
       accessToInformation: 'Access to Information',
@@ -359,10 +396,28 @@ const translations: Record<Language, Translations> = {
       closeMenu: 'Cerrar menú'
     },
     hero: {
-      eyebrow: 'Case Solver para litigantes',
       headline: 'Acelerando',
       subtitle: 'Resolución de Disputas',
-      viewFeatures: 'Ver Características'
+      viewFeatures: 'Ver Características',
+      caseButton: 'Tengo un caso'
+    },
+    caseChat: {
+      title: 'Envía tu caso',
+      steps: ['Ingresa tu caso', 'Adjunta evidencia', 'Cotizamos con abogados', 'Financiamos y resolvemos'],
+      welcomeMessage: 'Cuéntanos qué caso tienes',
+      askEvidence: 'Gracias por los detalles. ¿Podrías adjuntar evidencia o documentos relevantes? También puedes compartir más detalles sobre la situación.',
+      askMoreDetails: 'Gracias. ¿Hay alguna información adicional o documentos que quieras agregar?',
+      placeholder: 'Escribe tu mensaje...',
+      attachFile: 'Adjuntar archivo',
+      submitCase: 'Enviar caso',
+      emailTitle: 'Tu email de contacto',
+      emailSubtitle: 'Ingresa tu correo para que podamos contactarte sobre tu caso.',
+      emailPlaceholder: 'nombre@empresa.com',
+      emailError: 'Por favor ingresa un correo válido.',
+      back: 'Volver',
+      successTitle: '¡Caso enviado!',
+      successMessage: 'Hemos recibido tu caso. Nuestro equipo lo revisará y te contactará pronto.',
+      close: 'Cerrar'
     },
     features: {
       accessToInformation: 'Acceso a Información',
