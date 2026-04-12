@@ -8,13 +8,17 @@
 /* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL - DO NOT DELETE THIS COMMENT */
 
 :root {
-  --color-teal-primary: #0D6B6E;
-  --color-teal-light: #0F8B8D;
-  --color-teal-dark: #064E4F;
-  --color-bg-primary: #0A0A0A;
-  --color-bg-secondary: #111111;
-  --color-bg-card: #161616;
-  --color-border: #262626;
+  /* Motex brand palette */
+  --color-brand-primary: #1D49A7;   /* Motex Blue */
+  --color-brand-hover:   #163a86;   /* Blue dark hover */
+  --color-brand-light:   #5A8BE0;   /* Sky */
+  --color-brand-dark:    #05162B;   /* Navy */
+
+  /* Dark editorial backgrounds */
+  --color-bg-primary:   #080e1a;    /* Deep navy-black */
+  --color-bg-secondary: #0d1424;    /* Dark navy */
+  --color-bg-card:      #111c30;    /* Card navy */
+  --color-border:       #1a2840;    /* Navy border */
 }
 
 body {

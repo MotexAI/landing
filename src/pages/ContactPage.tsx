@@ -61,7 +61,7 @@ export function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[#080e1a]">
       <Header />
       <main className="pt-32 pb-20 flex flex-col justify-center min-h-[80vh]">
         <div className="max-w-xl mx-auto px-6 w-full">
@@ -79,7 +79,7 @@ export function ContactPage() {
             }}
             className="text-center">
 
-            <p className="text-xs text-[#0D6B6E] uppercase tracking-[0.2em] mb-6">
+            <p className="text-xs text-[#5A8BE0] uppercase tracking-[0.2em] mb-6">
               {t.contact.title}
             </p>
 
@@ -96,7 +96,7 @@ export function ContactPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t.contact.placeholder}
-                  className="w-full bg-[#161616] border border-[#262626] rounded-xl px-6 py-4 text-white text-lg placeholder-gray-600 focus:outline-none focus:border-[#0D6B6E] focus:ring-1 focus:ring-[#0D6B6E] transition-all"
+                  className="w-full bg-[#111c30] border border-[#1a2840] rounded-xl px-6 py-4 text-white text-lg placeholder-gray-600 focus:outline-none focus:border-[#5A8BE0] focus:ring-1 focus:ring-[#5A8BE0] transition-all"
                   autoFocus
                   disabled={isLoading}
                   required />
@@ -104,7 +104,7 @@ export function ContactPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-[#0D6B6E] hover:bg-[#0a5a5c] disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium text-lg px-6 py-4 rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(13,107,110,0.3)] flex items-center justify-center gap-2">
+                  className="w-full bg-[#1D49A7] hover:bg-[#163a86] disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium text-lg px-6 py-4 rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(29,73,167,0.35)] flex items-center justify-center gap-2">
 
                   {isLoading ? (
                     <>
@@ -126,7 +126,7 @@ export function ContactPage() {
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-sm text-[#0D6B6E] mt-4">
+                  className="text-sm text-[#5A8BE0] mt-4">
                   ¡Gracias! Te contactaremos pronto.
                 </motion.p>
               )}

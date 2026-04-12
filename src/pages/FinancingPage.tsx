@@ -9,7 +9,7 @@ export function FinancingPage() {
   const { t } = useLanguage();
   const [isChatOpen, setIsChatOpen] = useState(false);
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[#080e1a]">
       <Header />
       <main className="pt-32 pb-20 flex flex-col justify-center min-h-[80vh]">
         <div className="max-w-3xl mx-auto px-6 w-full relative">
@@ -25,7 +25,7 @@ export function FinancingPage() {
                 repeat: Infinity,
                 ease: 'easeInOut'
               }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0D6B6E] blur-[150px] rounded-full" />
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#5A8BE0] blur-[150px] rounded-full" />
 
           </div>
 
@@ -43,7 +43,7 @@ export function FinancingPage() {
             }}
             className="text-center">
 
-            <p className="text-xs text-[#0D6B6E] uppercase tracking-[0.2em] mb-6">
+            <p className="text-xs text-[#5A8BE0] uppercase tracking-[0.2em] mb-6">
               {t.financing.eyebrow}
             </p>
 
@@ -57,7 +57,7 @@ export function FinancingPage() {
 
             <button
               onClick={() => setIsChatOpen(true)}
-              className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0D6B6E] hover:bg-[#0a5a5c] text-white text-lg font-medium rounded-xl transition-all duration-300 hover:shadow-[0_0_50px_rgba(13,107,110,0.4)]">
+              className="group inline-flex items-center gap-3 px-10 py-5 bg-[#1D49A7] hover:bg-[#163a86] text-white text-lg font-medium rounded-xl transition-all duration-300 hover:shadow-[0_0_50px_rgba(29,73,167,0.4)]">
 
               {t.financing.submitCase}
               <ArrowRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />

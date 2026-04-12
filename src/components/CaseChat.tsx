@@ -158,10 +158,10 @@ export function CaseChat({ isOpen, onClose }: CaseChatProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-lg bg-[#111111] border border-[#262626] rounded-2xl overflow-hidden flex flex-col max-h-[85vh]"
+            className="relative w-full max-w-lg bg-[#0d1424] border border-[#1a2840] rounded-2xl overflow-hidden flex flex-col max-h-[85vh]"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[#1a1a1a]">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[#1a2840]">
               <h3 className="text-white font-medium text-lg">{t.caseChat.title}</h3>
               <button
                 onClick={handleClose}
@@ -172,11 +172,11 @@ export function CaseChat({ isOpen, onClose }: CaseChatProps) {
             </div>
 
             {/* Process explanation */}
-            <div className="px-6 py-4 border-b border-[#1a1a1a] bg-[#0A0A0A]">
+            <div className="px-6 py-4 border-b border-[#1a2840] bg-[#080e1a]">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
                 {t.caseChat.steps.map((step: string, i: number) => (
                   <div key={i} className="flex items-center gap-2">
-                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#0D6B6E]/20 text-[#0D6B6E] text-[10px] flex items-center justify-center font-medium">
+                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#1D49A7]/20 text-[#5A8BE0] text-[10px] flex items-center justify-center font-medium">
                       {i + 1}
                     </span>
                     <span className="text-gray-400 text-xs leading-tight">{step}</span>
@@ -193,13 +193,13 @@ export function CaseChat({ isOpen, onClose }: CaseChatProps) {
                   animate={{ scale: 1 }}
                   transition={{ type: 'spring', stiffness: 200, damping: 15 }}
                 >
-                  <CheckCircleIcon className="w-16 h-16 text-[#0D6B6E] mb-4" />
+                  <CheckCircleIcon className="w-16 h-16 text-[#5A8BE0] mb-4" />
                 </motion.div>
                 <h4 className="text-xl font-medium text-white mb-2">{t.caseChat.successTitle}</h4>
                 <p className="text-gray-400 text-sm mb-6">{t.caseChat.successMessage}</p>
                 <button
                   onClick={handleClose}
-                  className="px-6 py-3 bg-[#0D6B6E] hover:bg-[#0a5a5c] text-white rounded-lg transition-colors"
+                  className="px-6 py-3 bg-[#1D49A7] hover:bg-[#163a86] text-white rounded-lg transition-colors"
                 >
                   {t.caseChat.close}
                 </button>
@@ -212,7 +212,7 @@ export function CaseChat({ isOpen, onClose }: CaseChatProps) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <MailIcon className="w-12 h-12 text-[#0D6B6E] mb-4 mx-auto" />
+                  <MailIcon className="w-12 h-12 text-[#5A8BE0] mb-4 mx-auto" />
                   <h4 className="text-xl font-medium text-white mb-2">{t.caseChat.emailTitle}</h4>
                   <p className="text-gray-400 text-sm mb-6">{t.caseChat.emailSubtitle}</p>
                   <div className="w-full max-w-xs mx-auto space-y-3">
@@ -223,7 +223,7 @@ export function CaseChat({ isOpen, onClose }: CaseChatProps) {
                       onChange={(e) => { setEmail(e.target.value); setEmailError(false); }}
                       onKeyDown={(e) => { if (e.key === 'Enter') handleSendWithEmail(); }}
                       placeholder={t.caseChat.emailPlaceholder}
-                      className={`w-full bg-[#1a1a1a] border ${emailError ? 'border-red-500' : 'border-[#262626]'} rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#0D6B6E] transition-colors`}
+                      className={`w-full bg-[#111c30] border ${emailError ? 'border-red-500' : 'border-[#1a2840]'} rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#5A8BE0] transition-colors`}
                     />
                     {emailError && (
                       <p className="text-red-500 text-xs">{t.caseChat.emailError}</p>
@@ -231,7 +231,7 @@ export function CaseChat({ isOpen, onClose }: CaseChatProps) {
                     <button
                       onClick={handleSendWithEmail}
                       disabled={isSending}
-                      className="w-full px-6 py-3 bg-[#0D6B6E] hover:bg-[#0a5a5c] disabled:opacity-50 text-white font-medium rounded-xl transition-all"
+                      className="w-full px-6 py-3 bg-[#1D49A7] hover:bg-[#163a86] disabled:opacity-50 text-white font-medium rounded-xl transition-all"
                     >
                       {isSending ? '...' : t.caseChat.submitCase}
                     </button>
@@ -256,8 +256,8 @@ export function CaseChat({ isOpen, onClose }: CaseChatProps) {
                       <div
                         className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm ${
                           msg.role === 'user'
-                            ? 'bg-[#0D6B6E] text-white rounded-br-md'
-                            : 'bg-[#1a1a1a] text-gray-300 rounded-bl-md'
+                            ? 'bg-[#1D49A7] text-white rounded-br-md'
+                            : 'bg-[#111c30] text-gray-300 rounded-bl-md'
                         }`}
                       >
                         {msg.text}
@@ -273,7 +273,7 @@ export function CaseChat({ isOpen, onClose }: CaseChatProps) {
                     {files.map((file, i) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-1 bg-[#1a1a1a] text-gray-400 text-xs px-3 py-1.5 rounded-full"
+                        className="inline-flex items-center gap-1 bg-[#111c30] text-gray-400 text-xs px-3 py-1.5 rounded-full"
                       >
                         {file.name}
                         <button onClick={() => removeFile(i)} className="hover:text-white ml-1">
@@ -285,11 +285,11 @@ export function CaseChat({ isOpen, onClose }: CaseChatProps) {
                 )}
 
                 {/* Input area */}
-                <div className="px-4 pb-4 pt-2 border-t border-[#1a1a1a]">
+                <div className="px-4 pb-4 pt-2 border-t border-[#1a2840]">
                   <div className="flex items-end gap-2">
                     <button
                       onClick={() => fileInputRef.current?.click()}
-                      className="flex-shrink-0 p-2.5 text-gray-500 hover:text-[#0D6B6E] transition-colors"
+                      className="flex-shrink-0 p-2.5 text-gray-500 hover:text-[#5A8BE0] transition-colors"
                       title={t.caseChat.attachFile}
                     >
                       <PaperclipIcon className="w-5 h-5" />
@@ -308,19 +308,19 @@ export function CaseChat({ isOpen, onClose }: CaseChatProps) {
                       onKeyDown={handleKeyDown}
                       placeholder={t.caseChat.placeholder}
                       rows={1}
-                      className="flex-1 bg-[#1a1a1a] border border-[#262626] rounded-xl px-4 py-2.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#0D6B6E] resize-none"
+                      className="flex-1 bg-[#111c30] border border-[#1a2840] rounded-xl px-4 py-2.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#5A8BE0] resize-none"
                     />
                     <button
                       onClick={handleSend}
                       disabled={!input.trim()}
-                      className="flex-shrink-0 p-2.5 text-gray-500 hover:text-[#0D6B6E] disabled:opacity-30 transition-colors"
+                      className="flex-shrink-0 p-2.5 text-gray-500 hover:text-[#5A8BE0] disabled:opacity-30 transition-colors"
                     >
                       <SendIcon className="w-5 h-5" />
                     </button>
                     <button
                       onClick={handleSubmitCase}
                       disabled={isSending || messages.filter(m => m.role === 'user').length === 0}
-                      className="flex-shrink-0 px-4 py-2.5 bg-[#0D6B6E] hover:bg-[#0a5a5c] disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-xl transition-all whitespace-nowrap"
+                      className="flex-shrink-0 px-4 py-2.5 bg-[#1D49A7] hover:bg-[#163a86] disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-xl transition-all whitespace-nowrap"
                     >
                       {isSending ? '...' : t.caseChat.submitCase}
                     </button>

@@ -34,7 +34,7 @@ export function StoriesPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#0A0A0A]">
+      <div className="min-h-screen bg-[#080e1a]">
         <Header />
         <main className="pt-32 pb-20">
           <div className="max-w-6xl mx-auto px-6">
@@ -55,7 +55,7 @@ export function StoriesPage() {
 
   const langPrefix = getLangPrefix();
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[#080e1a]">
       <Header />
       <main className="pt-32 pb-20">
         <div className="max-w-6xl mx-auto px-6">
@@ -73,7 +73,7 @@ export function StoriesPage() {
             }}
             className="mb-20">
 
-            <p className="text-xs text-[#0D6B6E] uppercase tracking-[0.2em] mb-6">
+            <p className="text-xs text-[#5A8BE0] uppercase tracking-[0.2em] mb-6">
               Blog
             </p>
             <h1 className="text-5xl md:text-6xl font-semibold text-white mb-8">
@@ -89,28 +89,28 @@ export function StoriesPage() {
               ? Array.from({ length: 6 }).map((_, index) => (
                 <div
                   key={index}
-                  className="h-full bg-[#111111] border border-[#1a1a1a] rounded-xl p-8 animate-pulse flex flex-col justify-between">
+                  className="h-full bg-[#0d1424] border border-[#1a2840] rounded-xl p-8 animate-pulse flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <div className="h-5 w-20 rounded-full bg-[#1f2933]" />
-                      <div className="h-4 w-24 rounded bg-[#1f2933]" />
+                      <div className="h-5 w-20 rounded-full bg-[#1a2840]" />
+                      <div className="h-4 w-24 rounded bg-[#1a2840]" />
                     </div>
                     <div className="space-y-3 mb-6">
-                      <div className="h-5 w-3/4 rounded bg-[#1f2933]" />
-                      <div className="h-4 w-full rounded bg-[#111827]" />
-                      <div className="h-4 w-5/6 rounded bg-[#111827]" />
+                      <div className="h-5 w-3/4 rounded bg-[#1a2840]" />
+                      <div className="h-4 w-full rounded bg-[#111c30]" />
+                      <div className="h-4 w-5/6 rounded bg-[#111c30]" />
                     </div>
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-8 rounded-full bg-[#1f2933]" />
+                      <div className="w-8 h-8 rounded-full bg-[#1a2840]" />
                       <div className="space-y-2 flex-1">
-                        <div className="h-3 w-24 rounded bg-[#1f2933]" />
-                        <div className="h-3 w-20 rounded bg-[#111827]" />
+                        <div className="h-3 w-24 rounded bg-[#1a2840]" />
+                        <div className="h-3 w-20 rounded bg-[#111c30]" />
                       </div>
                     </div>
                   </div>
-                  <div className="pt-6 border-t border-[#1a1a1a] mt-auto flex items-center justify-between">
-                    <div className="h-4 w-24 rounded bg-[#1f2933]" />
-                    <div className="h-4 w-4 rounded-full bg-[#1f2933]" />
+                  <div className="pt-6 border-t border-[#1a2840] mt-auto flex items-center justify-between">
+                    <div className="h-4 w-24 rounded bg-[#1a2840]" />
+                    <div className="h-4 w-4 rounded-full bg-[#1a2840]" />
                   </div>
                 </div>
               ))
@@ -132,11 +132,11 @@ export function StoriesPage() {
 
                   <Link
                     to={`${langPrefix}/stories/${story.slug}`}
-                    className="group flex flex-col h-full bg-[#111111] border border-[#1a1a1a] rounded-xl overflow-hidden hover:border-[#0D6B6E]/30 transition-colors duration-300">
+                    className="group flex flex-col h-full bg-[#0d1424] border border-[#1a2840] rounded-xl overflow-hidden hover:border-[#1D49A7]/40 transition-colors duration-300">
 
                     <div className="p-8 flex flex-col flex-grow">
                       <div className="flex items-center justify-between mb-6">
-                        <span className="text-xs font-medium text-[#0D6B6E] bg-[#0D6B6E]/10 px-2 py-1 rounded">
+                        <span className="text-xs font-medium text-[#5A8BE0] bg-[#1D49A7]/10 px-2 py-1 rounded">
                           {story.category}
                         </span>
                         <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -145,7 +145,7 @@ export function StoriesPage() {
                         </div>
                       </div>
 
-                      <h3 className="text-xl font-medium text-white mb-3 group-hover:text-[#0D6B6E] transition-colors">
+                      <h3 className="text-xl font-medium text-white mb-3 group-hover:text-[#5A8BE0] transition-colors">
                         {story.title}
                       </h3>
                       <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
@@ -169,11 +169,11 @@ export function StoriesPage() {
                         </div>
                       </div>
 
-                      <div className="pt-6 border-t border-[#1a1a1a] mt-auto flex items-center justify-between">
-                        <span className="text-sm text-white font-medium group-hover:underline decoration-[#0D6B6E] underline-offset-4">
+                      <div className="pt-6 border-t border-[#1a2840] mt-auto flex items-center justify-between">
+                        <span className="text-sm text-white font-medium group-hover:underline decoration-[#5A8BE0] underline-offset-4">
                           {t.stories.readFullStory}
                         </span>
-                        <ArrowRightIcon className="w-4 h-4 text-gray-500 group-hover:text-[#0D6B6E] transition-colors" />
+                        <ArrowRightIcon className="w-4 h-4 text-gray-500 group-hover:text-[#5A8BE0] transition-colors" />
                       </div>
                     </div>
                   </Link>

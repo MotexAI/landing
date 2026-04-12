@@ -45,7 +45,7 @@ export function ChatPage() {
     {
       id: '1',
       role: 'assistant',
-      content: language === 'es' 
+      content: language === 'es'
         ? `Hola, soy tu asistente legal especializado en ${practiceAreaNames[lawType || 'labour']?.es || 'Derecho'} en ${countryNames[country || 'cl']?.es || 'Chile'}. ¿En qué puedo ayudarte hoy?`
         : `Hello, I'm your legal assistant specialized in ${practiceAreaNames[lawType || 'labour']?.en || 'Law'} in ${countryNames[country || 'cl']?.en || 'Chile'}. How can I help you today?`,
       timestamp: new Date()
@@ -66,7 +66,7 @@ export function ChatPage() {
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!input.trim() || isLoading) return;
 
     const userMessage: Message = {
@@ -90,18 +90,18 @@ export function ChatPage() {
           : `I understand your question about ${practiceAreaNames[lawType || 'labour']?.en || 'Law'} in ${countryNames[country || 'cl']?.en || 'Chile'}. This is a sample response. In production, this would connect to an AI model specialized in legal information.`,
         timestamp: new Date()
       };
-      
+
       setMessages(prev => [...prev, assistantMessage]);
       setIsLoading(false);
     }, 1000);
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-[#080e1a] flex flex-col relative overflow-hidden">
       <Header />
-      
+
       {/* Background with grid pattern from Hero */}
-      <div className="absolute inset-0 bg-[#0A0A0A]">
+      <div className="absolute inset-0 bg-[#080e1a]">
         {/* Large gradient orb */}
         <motion.div
           animate={{
@@ -113,7 +113,7 @@ export function ChatPage() {
             repeat: Infinity,
             ease: 'easeInOut'
           }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#0D6B6E] blur-[150px] rounded-full" />
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#1D49A7] blur-[150px] rounded-full" />
 
         {/* Secondary orbs */}
         <motion.div
@@ -126,7 +126,7 @@ export function ChatPage() {
             repeat: Infinity,
             ease: 'easeInOut'
           }}
-          className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[#0D6B6E] opacity-[0.05] blur-[100px] rounded-full" />
+          className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[#1D49A7] opacity-[0.05] blur-[100px] rounded-full" />
 
         <motion.div
           animate={{
@@ -139,7 +139,7 @@ export function ChatPage() {
             ease: 'easeInOut',
             delay: 2
           }}
-          className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-[#14b8a6] opacity-[0.04] blur-[80px] rounded-full" />
+          className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-[#5A8BE0] opacity-[0.04] blur-[80px] rounded-full" />
 
         {/* Grid pattern */}
         <div
@@ -155,7 +155,7 @@ export function ChatPage() {
           <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-white to-transparent transform rotate-12 origin-top" />
         </div>
       </div>
-      
+
       <main className="flex-1 flex flex-col pt-16 pb-32 relative z-10">
         <div className="max-w-4xl mx-auto w-full px-6 flex flex-col h-full">
           {/* Messages Container */}
@@ -168,16 +168,16 @@ export function ChatPage() {
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 className={`flex gap-4 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 {message.role === 'assistant' && (
-                  <div className="w-8 h-8 rounded-full bg-[#0D6B6E]/20 flex items-center justify-center flex-shrink-0">
-                    <BotIcon className="w-4 h-4 text-[#0D6B6E]" />
+                  <div className="w-8 h-8 rounded-full bg-[#1D49A7]/20 flex items-center justify-center flex-shrink-0">
+                    <BotIcon className="w-4 h-4 text-[#5A8BE0]" />
                   </div>
                 )}
-                
+
                 <div
                   className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                     message.role === 'user'
-                      ? 'bg-[#0D6B6E] text-white'
-                      : 'bg-[#111111] border border-[#1a1a1a] text-gray-300'
+                      ? 'bg-[#1D49A7] text-white'
+                      : 'bg-[#0d1424] border border-[#1a2840] text-gray-300'
                   }`}>
                   <p className="text-sm leading-relaxed whitespace-pre-wrap">
                     {message.content}
@@ -185,7 +185,7 @@ export function ChatPage() {
                 </div>
 
                 {message.role === 'user' && (
-                  <div className="w-8 h-8 rounded-full bg-[#0D6B6E] flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-[#1D49A7] flex items-center justify-center flex-shrink-0">
                     <UserIcon className="w-4 h-4 text-white" />
                   </div>
                 )}
@@ -197,14 +197,14 @@ export function ChatPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="flex gap-4 justify-start">
-                <div className="w-8 h-8 rounded-full bg-[#0D6B6E]/20 flex items-center justify-center flex-shrink-0">
-                  <BotIcon className="w-4 h-4 text-[#0D6B6E]" />
+                <div className="w-8 h-8 rounded-full bg-[#1D49A7]/20 flex items-center justify-center flex-shrink-0">
+                  <BotIcon className="w-4 h-4 text-[#5A8BE0]" />
                 </div>
-                <div className="bg-[#111111] border border-[#1a1a1a] rounded-2xl px-4 py-3">
+                <div className="bg-[#0d1424] border border-[#1a2840] rounded-2xl px-4 py-3">
                   <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-[#0D6B6E] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <div className="w-2 h-2 bg-[#0D6B6E] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <div className="w-2 h-2 bg-[#0D6B6E] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <div className="w-2 h-2 bg-[#5A8BE0] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <div className="w-2 h-2 bg-[#5A8BE0] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <div className="w-2 h-2 bg-[#5A8BE0] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               </motion.div>
@@ -242,14 +242,14 @@ export function ChatPage() {
                   ? `Hazme una pregunta del ${practiceAreaNames[lawType || 'labour']?.es || 'Derecho'} de ${countryNames[country || 'cl']?.es || 'Chile'}...`
                   : `Ask me a question about ${practiceAreaNames[lawType || 'labour']?.en || 'Law'} in ${countryNames[country || 'cl']?.en || 'Chile'}...`
               }
-              className="flex-1 bg-[#111111]/95 backdrop-blur-sm border border-[#1a1a1a] rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#0D6B6E] focus:ring-1 focus:ring-[#0D6B6E] transition-all resize-none max-h-[200px] shadow-lg"
+              className="flex-1 bg-[#0d1424]/95 backdrop-blur-sm border border-[#1a2840] rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#5A8BE0] focus:ring-1 focus:ring-[#5A8BE0] transition-all resize-none max-h-[200px] shadow-lg"
               rows={1}
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={!input.trim() || isLoading}
-              className="bg-[#0D6B6E] hover:bg-[#0a5a5c] disabled:opacity-50 disabled:cursor-not-allowed text-white p-3 rounded-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(13,107,110,0.3)] flex-shrink-0">
+              className="bg-[#1D49A7] hover:bg-[#163a86] disabled:opacity-50 disabled:cursor-not-allowed text-white p-3 rounded-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(29,73,167,0.3)] flex-shrink-0">
               <SendIcon className="w-5 h-5" />
             </button>
           </div>
@@ -259,4 +259,3 @@ export function ChatPage() {
     </div>
   );
 }
-
