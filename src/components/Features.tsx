@@ -6,14 +6,14 @@ export function Features() {
   const { t } = useLanguage();
 
   const informationFeatures = [
-    { icon: <FolderKanbanIcon className="w-5 h-5" />, title: t.features.caseManagement,        description: t.features.caseManagementDesc },
-    { icon: <BookOpenIcon    className="w-5 h-5" />, title: t.features.legalInformation,       description: t.features.legalInformationDesc },
-    { icon: <LineChartIcon   className="w-5 h-5" />, title: t.features.predictiveInformation,  description: t.features.predictiveInformationDesc },
+    { icon: <FolderKanbanIcon className="w-4 h-4" />, title: t.features.caseManagement,       description: t.features.caseManagementDesc },
+    { icon: <BookOpenIcon    className="w-4 h-4" />, title: t.features.legalInformation,      description: t.features.legalInformationDesc },
+    { icon: <LineChartIcon   className="w-4 h-4" />, title: t.features.predictiveInformation, description: t.features.predictiveInformationDesc },
   ];
 
   const financingFeatures = [
-    { icon: <SearchIcon  className="w-5 h-5" />, title: t.features.caseScreening, description: t.features.caseScreeningDesc },
-    { icon: <PieChartIcon className="w-5 h-5" />, title: t.features.analysis,     description: t.features.analysisDesc },
+    { icon: <SearchIcon   className="w-4 h-4" />, title: t.features.caseScreening, description: t.features.caseScreeningDesc },
+    { icon: <PieChartIcon className="w-4 h-4" />, title: t.features.analysis,     description: t.features.analysisDesc },
   ];
 
   return (
@@ -26,60 +26,84 @@ export function Features() {
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
-          {/* Access to Information */}
+          {/* 01 — Access to Information */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}>
-            <h2 className="text-3xl font-semibold text-white mb-8 flex items-center gap-3">
-              <span className="w-2 h-8 bg-[#1D49A7] rounded-full" />
-              {t.features.accessToInformation}
-            </h2>
-            <div className="space-y-6">
+
+            <div className="flex items-baseline gap-4 mb-10 pb-6 border-b border-[#1a2840]">
+              <span className="font-mono text-xs tracking-[0.2em] text-[#1D49A7]">01</span>
+              <h2 className="text-xl font-medium text-white tracking-tight">
+                {t.features.accessToInformation}
+              </h2>
+            </div>
+
+            <div className="divide-y divide-[#1a2840]">
               {informationFeatures.map((feature, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="group p-6 rounded-xl bg-[#111c30] border border-[#1a2840] hover:border-[#1D49A7]/40 transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-[#1D49A7]/10 text-[#5A8BE0] group-hover:bg-[#1D49A7]/20 transition-colors">
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
+                  className="py-6 group">
+                  <div className="flex items-start gap-5">
+                    <div className="mt-0.5 text-[#5A8BE0] flex-shrink-0 transition-transform duration-300 group-hover:translate-y-[-1px]">
                       {feature.icon}
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium text-white mb-2">{feature.title}</h3>
-                      <p className="text-content-primary text-sm leading-relaxed">{feature.description}</p>
+                      <h3 className="text-sm font-medium text-white mb-1.5 group-hover:text-[#5A8BE0] transition-colors duration-200">
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm text-content-primary leading-relaxed">
+                        {feature.description}
+                      </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Access to Financing */}
+          {/* 02 — Access to Financing */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}>
-            <h2 className="text-3xl font-semibold text-white mb-8 flex items-center gap-3">
-              <span className="w-2 h-8 bg-[#1D49A7] rounded-full" />
-              {t.features.accessToFinancing}
-            </h2>
-            <div className="space-y-6">
+            transition={{ duration: 0.6, delay: 0.1 }}>
+
+            <div className="flex items-baseline gap-4 mb-10 pb-6 border-b border-[#1a2840]">
+              <span className="font-mono text-xs tracking-[0.2em] text-[#1D49A7]">02</span>
+              <h2 className="text-xl font-medium text-white tracking-tight">
+                {t.features.accessToFinancing}
+              </h2>
+            </div>
+
+            <div className="divide-y divide-[#1a2840]">
               {financingFeatures.map((feature, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="group p-6 rounded-xl bg-[#111c30] border border-[#1a2840] hover:border-[#1D49A7]/40 transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-[#1D49A7]/10 text-[#5A8BE0] group-hover:bg-[#1D49A7]/20 transition-colors">
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 + 0.1 }}
+                  className="py-8 group">
+                  <div className="flex items-start gap-5">
+                    <div className="mt-0.5 text-[#5A8BE0] flex-shrink-0 transition-transform duration-300 group-hover:translate-y-[-1px]">
                       {feature.icon}
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium text-white mb-2">{feature.title}</h3>
-                      <p className="text-content-primary text-sm leading-relaxed">{feature.description}</p>
+                      <h3 className="text-base font-medium text-white mb-2 group-hover:text-[#5A8BE0] transition-colors duration-200">
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm text-content-primary leading-relaxed">
+                        {feature.description}
+                      </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>

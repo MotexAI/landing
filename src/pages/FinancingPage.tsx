@@ -13,20 +13,9 @@ export function FinancingPage() {
       <Header />
       <main className="pt-32 pb-20 flex flex-col justify-center min-h-[80vh]">
         <div className="max-w-3xl mx-auto px-6 w-full relative">
-          {/* Background glow */}
-          <div className="absolute inset-0 -z-10">
-            <motion.div
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.06, 0.1, 0.06]
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#5A8BE0] blur-[150px] rounded-full" />
-
+          {/* Decorative background glow */}
+          <div className="absolute inset-0 -z-10" aria-hidden="true">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#1D49A7] opacity-[0.07] blur-[150px] rounded-full" />
           </div>
 
           <motion.div
@@ -47,11 +36,11 @@ export function FinancingPage() {
               {t.financing.eyebrow}
             </p>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 leading-tight">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-light text-white mb-8 leading-tight tracking-tight">
               {t.financing.title}
             </h1>
 
-            <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-content-primary mb-12 max-w-2xl mx-auto leading-relaxed">
               {t.financing.subtitle}
             </p>
 

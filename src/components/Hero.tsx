@@ -59,9 +59,9 @@ export function Hero() {
           className="text-center">
 
           {/* Headline */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-white leading-[0.95] tracking-tight mb-8">
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] tracking-tight mb-8">
             {t.hero.headline}{' '}
-            <span className="text-content-primary whitespace-nowrap">{t.hero.subtitle}</span>
+            <span className="text-content-primary whitespace-nowrap italic">{t.hero.subtitle}</span>
           </h1>
 
           {/* CTA */}
