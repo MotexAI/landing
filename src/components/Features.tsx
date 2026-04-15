@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { FolderKanbanIcon, BookOpenIcon, LineChartIcon, SearchIcon, PieChartIcon } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
@@ -19,8 +18,8 @@ export function Features() {
 
   return (
     <section id="features" className="py-32 bg-[#0d1424] relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute inset-0">
+      {/* Decorative background glow */}
+      <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#1D49A7] opacity-[0.04] blur-[150px] rounded-full" />
       </div>
 
@@ -48,7 +47,7 @@ export function Features() {
                     </div>
                     <div>
                       <h3 className="text-lg font-medium text-white mb-2">{feature.title}</h3>
-                      <p className="text-gray-500 text-sm leading-relaxed">{feature.description}</p>
+                      <p className="text-content-primary text-sm leading-relaxed">{feature.description}</p>
                     </div>
                   </div>
                 </div>
@@ -77,7 +76,7 @@ export function Features() {
                     </div>
                     <div>
                       <h3 className="text-lg font-medium text-white mb-2">{feature.title}</h3>
-                      <p className="text-gray-500 text-sm leading-relaxed">{feature.description}</p>
+                      <p className="text-content-primary text-sm leading-relaxed">{feature.description}</p>
                     </div>
                   </div>
                 </div>

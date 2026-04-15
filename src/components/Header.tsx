@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MenuIcon, XIcon } from 'lucide-react';
@@ -82,7 +82,7 @@ export function Header() {
                   trackLinkClick(link.label, link.href, { location: 'header', language });
                 }}
                 className={`text-sm transition-colors ${
-                  isActive(link.href) ? 'text-white' : 'text-gray-400 hover:text-white'
+                  isActive(link.href) ? 'text-white' : 'text-content-primary hover:text-white'
                 }`}>
                 {link.label}
               </Link>
@@ -95,15 +95,15 @@ export function Header() {
               <button
                 onClick={() => handleLanguageChange('en')}
                 className={`px-2 py-1 rounded transition-colors ${
-                  language === 'en' ? 'text-white bg-[#1a2840]' : 'text-gray-500 hover:text-white'
+                  language === 'en' ? 'text-white bg-[#1a2840]' : 'text-content-primary hover:text-white'
                 }`}>
                 EN
               </button>
-              <span className="text-gray-600">|</span>
+              <span className="text-content-secondary" aria-hidden="true">|</span>
               <button
                 onClick={() => handleLanguageChange('es')}
                 className={`px-2 py-1 rounded transition-colors ${
-                  language === 'es' ? 'text-white bg-[#1a2840]' : 'text-gray-500 hover:text-white'
+                  language === 'es' ? 'text-white bg-[#1a2840]' : 'text-content-primary hover:text-white'
                 }`}>
                 ES
               </button>
@@ -119,7 +119,7 @@ export function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 text-gray-400 hover:text-white"
+            className="md:hidden p-2 text-content-primary hover:text-white"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
             aria-expanded={mobileMenuOpen}>
@@ -145,26 +145,30 @@ export function Header() {
                   className={`px-4 py-3 text-sm rounded-lg transition-colors ${
                     isActive(link.href)
                       ? 'text-white bg-[#0d1424]'
-                      : 'text-gray-400 hover:text-white hover:bg-[#0d1424]'
+                      : 'text-content-primary hover:text-white hover:bg-[#0d1424]'
                   }`}>
                   {link.label}
                 </Link>
               ))}
 
               <div className="flex items-center gap-2 px-4 py-3">
-                <span className="text-sm text-gray-500">Language:</span>
                 <button
                   onClick={() => handleLanguageChange('en')}
                   className={`px-3 py-1 text-sm rounded transition-colors ${
-                    language === 'en' ? 'text-white bg-[#1a2840]' : 'text-gray-500'
-                  }`}>
+                    language === 'en' ? 'text-white bg-[#1a2840]' : 'text-content-primary hover:text-white'
+                  }`}
+                  aria-label="Switch to English"
+                  aria-pressed={language === 'en'}>
                   EN
                 </button>
+                <span className="text-content-secondary text-xs" aria-hidden="true">|</span>
                 <button
                   onClick={() => handleLanguageChange('es')}
                   className={`px-3 py-1 text-sm rounded transition-colors ${
-                    language === 'es' ? 'text-white bg-[#1a2840]' : 'text-gray-500'
-                  }`}>
+                    language === 'es' ? 'text-white bg-[#1a2840]' : 'text-content-primary hover:text-white'
+                  }`}
+                  aria-label="Cambiar a Español"
+                  aria-pressed={language === 'es'}>
                   ES
                 </button>
               </div>
