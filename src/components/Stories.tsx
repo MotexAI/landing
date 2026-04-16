@@ -45,7 +45,7 @@ export function Stories() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">{t.stories.title}</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-light text-white mb-4 tracking-tight">{t.stories.title}</h2>
             <p className="text-content-primary max-w-xl">{t.stories.subtitle}</p>
           </motion.div>
 
