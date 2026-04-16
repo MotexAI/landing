@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRightIcon } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { trackButtonClick } from '../utils/amplitude';
@@ -8,28 +8,29 @@ import { CaseChat } from './CaseChat';
 export function Hero() {
   const { t, language } = useLanguage();
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Dynamic background */}
-      <div className="absolute inset-0 bg-[#080e1a]">
+      {/* Decorative background — hidden from assistive tech */}
+      <div className="absolute inset-0 bg-[#080e1a]" aria-hidden="true">
         {/* Primary glow — Motex Blue */}
         <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.16, 0.1] }}
+          animate={prefersReducedMotion ? {} : { scale: [1, 1.2, 1], opacity: [0.1, 0.16, 0.1] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#1D49A7] blur-[160px] rounded-full"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#1D49A7] blur-[160px] rounded-full opacity-[0.1]"
         />
 
-        {/* Secondary glow — Sky */}
+        {/* Secondary glow */}
         <motion.div
-          animate={{ x: [0, 50, 0], y: [0, -30, 0] }}
+          animate={prefersReducedMotion ? {} : { x: [0, 50, 0], y: [0, -30, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[#1D49A7] opacity-[0.06] blur-[100px] rounded-full"
         />
 
-        {/* Accent glow — Sky blue */}
+        {/* Accent glow */}
         <motion.div
-          animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
+          animate={prefersReducedMotion ? {} : { x: [0, -40, 0], y: [0, 40, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
           className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-[#5A8BE0] opacity-[0.05] blur-[80px] rounded-full"
         />
@@ -58,9 +59,9 @@ export function Hero() {
           className="text-center">
 
           {/* Headline */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-white leading-[0.95] tracking-tight mb-8">
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] tracking-tight mb-8">
             {t.hero.headline}{' '}
-            <span className="text-gray-500 whitespace-nowrap">{t.hero.subtitle}</span>
+            <span className="text-content-primary whitespace-nowrap italic">{t.hero.subtitle}</span>
           </h1>
 
           {/* CTA */}

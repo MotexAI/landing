@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon, CalendarIcon } from 'lucide-react';
@@ -45,8 +45,8 @@ export function Stories() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">{t.stories.title}</h2>
-            <p className="text-gray-500 max-w-xl">{t.stories.subtitle}</p>
+            <h2 className="font-display text-3xl md:text-4xl font-light text-white mb-4 tracking-tight">{t.stories.title}</h2>
+            <p className="text-content-primary max-w-xl">{t.stories.subtitle}</p>
           </motion.div>
 
           <motion.div
@@ -105,7 +105,7 @@ export function Stories() {
                         <span className="text-xs font-medium text-[#5A8BE0] bg-[#1D49A7]/10 px-2 py-1 rounded">
                           {story.category}
                         </span>
-                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                        <div className="flex items-center gap-2 text-xs text-content-primary">
                           <CalendarIcon className="w-3 h-3" />
                           {story.date}
                         </div>
@@ -114,13 +114,13 @@ export function Stories() {
                       <h3 className="text-xl font-medium text-white mb-3 group-hover:text-[#5A8BE0] transition-colors">
                         {story.title}
                       </h3>
-                      <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">{story.excerpt}</p>
+                      <p className="text-content-primary text-sm leading-relaxed mb-6 flex-grow">{story.excerpt}</p>
 
                       <div className="flex items-center gap-3 mb-6">
                         <img src={story.author.avatar} alt={story.author.name} className="w-8 h-8 rounded-full object-cover" />
                         <div>
                           <p className="text-sm text-white font-medium">{story.author.name}</p>
-                          <p className="text-xs text-gray-500">{story.author.role}</p>
+                          <p className="text-xs text-content-primary">{story.author.role}</p>
                         </div>
                       </div>
 

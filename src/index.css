@@ -1,5 +1,5 @@
 /* URL IMPORTS (SUCH AS FONT IMPORTS) SHOULD BE KEPT ABOVE TAILWIND IMPORTS - DO NOT DELETE THIS COMMENT */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@400;500;600;700&display=swap');
 
 /* PLEASE NOTE: THESE TAILWIND IMPORTS SHOULD NEVER BE DELETED - DO NOT DELETE THIS COMMENT */
 @import 'tailwindcss/base';
@@ -8,17 +8,23 @@
 /* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL - DO NOT DELETE THIS COMMENT */
 
 :root {
-  /* Motex brand palette */
-  --color-brand-primary: #1D49A7;   /* Motex Blue */
-  --color-brand-hover:   #163a86;   /* Blue dark hover */
-  --color-brand-light:   #5A8BE0;   /* Sky */
-  --color-brand-dark:    #05162B;   /* Navy */
+  /* Motex brand — source of truth: docs/branding/branding.md */
+  --color-navy:        #05162B;   /* Primary brand — dark backgrounds */
+  --color-blue:        #1D49A7;   /* Primary accent — CTAs, interactive */
+  --color-blue-hover:  #163a86;   /* Blue hover state */
+  --color-sky:         #5A8BE0;   /* Secondary accent — highlights */
 
-  /* Dark editorial backgrounds */
-  --color-bg-primary:   #080e1a;    /* Deep navy-black */
-  --color-bg-secondary: #0d1424;    /* Dark navy */
-  --color-bg-card:      #111c30;    /* Card navy */
-  --color-border:       #1a2840;    /* Navy border */
+  /* Brand grays (blue undertone, derived from Navy) */
+  --color-gray-100:    #F5F7FA;   /* Subtle light backgrounds */
+  --color-gray-200:    #E4E8EE;   /* Borders, separators (light mode) */
+  --color-gray-400:    #9BA5B5;   /* Secondary text */
+  --color-gray-600:    #5C6879;   /* Tertiary / muted text */
+
+  /* Dark editorial backgrounds (landing-specific) */
+  --color-bg-primary:   #080e1a;  /* Deep navy-black — hero, footer */
+  --color-bg-secondary: #0d1424;  /* Features section, card hover */
+  --color-bg-card:      #111c30;  /* Feature cards */
+  --color-edge:         #1a2840;  /* Borders / dividers */
 }
 
 body {
