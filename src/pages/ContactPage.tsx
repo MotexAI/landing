@@ -83,11 +83,11 @@ export function ContactPage() {
               {t.contact.title}
             </p>
 
-            <h1 className="text-4xl md:text-5xl font-semibold text-white mb-6">
+            <h1 className="font-display text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
               {t.contact.headline}
             </h1>
 
-            <p className="text-lg text-gray-400 mb-12">{t.contact.subtitle}</p>
+            <p className="text-lg text-content-primary mb-12">{t.contact.subtitle}</p>
 
             <form className="w-full" onSubmit={handleSubmit}>
               <div className="flex flex-col gap-4">
@@ -96,7 +96,7 @@ export function ContactPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t.contact.placeholder}
-                  className="w-full bg-[#111c30] border border-[#1a2840] rounded-xl px-6 py-4 text-white text-lg placeholder-gray-600 focus:outline-none focus:border-[#5A8BE0] focus:ring-1 focus:ring-[#5A8BE0] transition-all"
+                  className="w-full bg-[#111c30] border border-[#1a2840] rounded-xl px-6 py-4 text-white text-lg placeholder-content-secondary focus:outline-none focus:border-[#5A8BE0] focus:ring-1 focus:ring-[#5A8BE0] transition-all"
                   autoFocus
                   disabled={isLoading}
                   required />
@@ -108,11 +108,15 @@ export function ContactPage() {
 
                   {isLoading ? (
                     <>
-                      <span className="animate-spin">⏳</span> Enviando...
+                      <svg className="animate-spin w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                      {t.contact.submit}
                     </>
                   ) : status === 'success' ? (
                     <>
-                      <CheckIcon className="w-5 h-5" /> Enviado
+                      <CheckIcon className="w-5 h-5" /> {t.contact.submit}
                     </>
                   ) : (
                     <>
@@ -141,7 +145,7 @@ export function ContactPage() {
                 </motion.p>
               )}
 
-              <p className="text-xs text-gray-600 mt-6">{t.contact.privacy}</p>
+              <p className="text-xs text-content-secondary mt-6">{t.contact.privacy}</p>
             </form>
           </motion.div>
         </div>
