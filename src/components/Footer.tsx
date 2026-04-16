@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LinkedinIcon, TwitterIcon } from 'lucide-react';
+import { GithubIcon, MailIcon } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export function Footer() {
@@ -39,20 +39,18 @@ export function Footer() {
           {/* Social */}
           <div className="flex items-center gap-3">
             <a
-              href="https://linkedin.com"
+              href="https://github.com/MotexAI"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-lg bg-[#0d1424] border border-[#1a2840] flex items-center justify-center text-content-secondary hover:text-white hover:border-[#1D49A7]/50 transition-all duration-300"
-              aria-label="LinkedIn">
-              <LinkedinIcon className="w-4 h-4" />
+              aria-label="GitHub">
+              <GithubIcon className="w-4 h-4" />
             </a>
             <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:cristian@motex.ai"
               className="w-9 h-9 rounded-lg bg-[#0d1424] border border-[#1a2840] flex items-center justify-center text-content-secondary hover:text-white hover:border-[#1D49A7]/50 transition-all duration-300"
-              aria-label="Twitter">
-              <TwitterIcon className="w-4 h-4" />
+              aria-label="Email">
+              <MailIcon className="w-4 h-4" />
             </a>
           </div>
         </div>
