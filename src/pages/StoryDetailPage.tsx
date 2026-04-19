@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { motion } from 'framer-motion';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -198,11 +200,47 @@ export function StoryDetailPage() {
             }}
             className="prose prose-invert prose-lg max-w-none mb-16">
 
-            {story.content.split('\n\n').map((paragraph, index) =>
-            <p key={index} className="text-gray-300 leading-relaxed mb-6">
-                {paragraph}
-              </p>
-            )}
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                p: ({ children }) => (
+                  <p className="text-gray-300 leading-relaxed mb-6">{children}</p>
+                ),
+                h2: ({ children }) => (
+                  <h2 className="text-2xl font-semibold text-white mt-10 mb-4">{children}</h2>
+                ),
+                h3: ({ children }) => (
+                  <h3 className="text-xl font-semibold text-white mt-8 mb-3">{children}</h3>
+                ),
+                strong: ({ children }) => (
+                  <strong className="text-white font-semibold">{children}</strong>
+                ),
+                em: ({ children }) => (
+                  <em className="text-gray-300 italic">{children}</em>
+                ),
+                a: ({ href, children }) => (
+                  <a href={href} target="_blank" rel="noopener noreferrer"
+                    className="text-[#5A8BE0] hover:underline">
+                    {children}
+                  </a>
+                ),
+                ul: ({ children }) => (
+                  <ul className="list-disc list-inside text-gray-300 mb-6 space-y-2">{children}</ul>
+                ),
+                ol: ({ children }) => (
+                  <ol className="list-decimal list-inside text-gray-300 mb-6 space-y-2">{children}</ol>
+                ),
+                li: ({ children }) => (
+                  <li className="text-gray-300">{children}</li>
+                ),
+                blockquote: ({ children }) => (
+                  <blockquote className="border-l-4 border-[#1D49A7] pl-6 my-6 text-gray-400 italic">
+                    {children}
+                  </blockquote>
+                ),
+              }}>
+              {story.content}
+            </ReactMarkdown>
           </motion.div>
 
           {/* Social Share */}
