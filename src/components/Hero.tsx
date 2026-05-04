@@ -1,14 +1,24 @@
-import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRightIcon } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { trackButtonClick } from '../utils/amplitude';
-import { CaseChat } from './CaseChat';
 
 export function Hero() {
   const { t, language } = useLanguage();
-  const [isChatOpen, setIsChatOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const prefersReducedMotion = useReducedMotion();
+
+  const getLangPrefix = () => {
+    if (location.pathname.startsWith('/en')) return '/en';
+    return '/es';
+  };
+
+  const handleTryDemo = () => {
+    trackButtonClick('Try Demo', { location: 'hero', language });
+    navigate(`${getLangPrefix()}/contact`);
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -67,12 +77,9 @@ export function Hero() {
           {/* CTA */}
           <div className="flex items-center justify-center">
             <button
-              onClick={() => {
-                trackButtonClick('Tengo un caso', { location: 'hero', language });
-                setIsChatOpen(true);
-              }}
+              onClick={handleTryDemo}
               className="group flex items-center gap-3 px-8 py-4 bg-[#1D49A7] hover:bg-[#163a86] text-white font-medium rounded-lg transition-all duration-300 hover:shadow-[0_0_50px_rgba(29,73,167,0.45)]">
-              {t.hero.caseButton}
+              {t.nav.tryDemo}
               <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
@@ -81,9 +88,6 @@ export function Hero() {
 
       {/* Bottom gradient line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1D49A7]/50 to-transparent" />
-
-      {/* Case Chat Modal */}
-      <CaseChat isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </section>
   );
 }

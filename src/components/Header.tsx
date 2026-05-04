@@ -24,7 +24,6 @@ export function Header() {
     { label: t.nav.features,     href: `${langPrefix}/#features` },
     { label: t.nav.stories,      href: `${langPrefix}/stories` },
     { label: t.nav.information,  href: `${langPrefix}/information` },
-    { label: t.nav.financing,    href: `${langPrefix}/financing` },
     { label: t.nav.contact,      href: `${langPrefix}/contact` },
   ];
 
