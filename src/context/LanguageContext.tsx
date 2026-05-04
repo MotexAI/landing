@@ -129,6 +129,13 @@ interface Translations {
     eyebrow: string;
     title: string;
     subtitle: string;
+    howItWorksTitle: string;
+    step1Title: string;
+    step1Desc: string;
+    step2Title: string;
+    step2Desc: string;
+    step3Title: string;
+    step3Desc: string;
     submitCase: string;
   };
   // Footer
@@ -201,14 +208,14 @@ const translations: Record<Language, Translations> = {
       closeMenu: 'Close menu'
     },
     hero: {
-      headline: 'Accelerating Dispute',
-      subtitle: 'Resolution',
+      headline: 'Streamline Your Legal',
+      subtitle: 'Case Management',
       viewFeatures: 'View Features',
       caseButton: 'I have a case'
     },
     caseChat: {
       title: 'Submit Your Case',
-      steps: ['Submit your case', 'Attach evidence', 'We quote with lawyers', 'We finance and resolve'],
+      steps: ['Submit your case', 'Attach evidence', 'We quote with lawyers', 'We support and resolve'],
       welcomeMessage: 'Tell us about your case',
       askEvidence: 'Thank you for the details. Could you attach any evidence or relevant documents? You can also share more details about the situation.',
       askMoreDetails: 'Thank you. Is there any additional information or documents you would like to add?',
@@ -226,9 +233,9 @@ const translations: Record<Language, Translations> = {
     },
     features: {
       accessToInformation: 'Access to Information',
-      accessToFinancing: 'Access to Financing',
+      accessToFinancing: 'Capital Top-up',
       caseManagement: 'Case Management',
-      caseManagementDesc: 'Centralized workflow for all your dispute cases.',
+      caseManagementDesc: 'Centralized workflow for all your legal cases.',
       legalInformation: 'Legal Information',
       legalInformationDesc:
       'Comprehensive database of relevant legal precedents.',
@@ -238,7 +245,7 @@ const translations: Record<Language, Translations> = {
       caseScreening: 'Case Screening',
       caseScreeningDesc: 'Automated evaluation of case viability and risk.',
       analysis: 'Analysis',
-      analysisDesc: 'Deep financial analysis for litigation funding.'
+      analysisDesc: 'In-depth analytics and insights for every case.'
     },
     stories: {
       title: 'Stories',
@@ -249,12 +256,12 @@ const translations: Record<Language, Translations> = {
       readFullStory: 'Read full story',
       blogTitle: 'Stories & Insights',
       blogSubtitle:
-      'Thoughts on the evolution of dispute resolution, legal technology, and the future of law.',
+      'Thoughts on the evolution of legal technology, case management, and the future of law.',
       by: 'By',
       shareStory: 'Share this story',
       subscribeTitle: 'Stay Updated',
       subscribeSubtitle:
-      'Get the latest insights on legal technology and dispute resolution delivered to your inbox.',
+      'Get the latest insights on legal technology and case management delivered to your inbox.',
       subscribePlaceholder: 'Enter your email',
       subscribeButton: 'Subscribe',
       relatedStories: 'Related Stories',
@@ -328,14 +335,21 @@ const translations: Record<Language, Translations> = {
       constitutionalLaw: 'Constitutional Law'
     },
     financing: {
-      eyebrow: 'Litigation Finance',
-      title: 'Fund Your Case',
+      eyebrow: 'Financing',
+      title: 'We Finance Your Case',
       subtitle:
-      'Access non-recourse financing for meritorious litigation. We evaluate cases across Latin America and provide capital to pursue claims that deserve resolution.',
+      'We finance economically attractive cases. Our underwriting models evaluate legal merit and economic viability to connect the right cases with capital.',
+      howItWorksTitle: 'How it works',
+      step1Title: 'Submit your case',
+      step1Desc: 'Send us the details of your case and the amount you need financed.',
+      step2Title: 'Underwriting analysis',
+      step2Desc: 'Our models identify whether the case has legal merits and is economically attractive to be financed.',
+      step3Title: 'We reach out',
+      step3Desc: 'If your case qualifies, we will contact you as soon as possible.',
       submitCase: 'Submit Your Case'
     },
     footer: {
-      tagline: 'Modern legal infrastructure for dispute resolution.',
+      tagline: 'Modern legal infrastructure for case management.',
       copyright: 'All rights reserved.',
       privacy: 'Privacy',
       terms: 'Terms'
@@ -396,14 +410,14 @@ const translations: Record<Language, Translations> = {
       closeMenu: 'Cerrar menú'
     },
     hero: {
-      headline: 'Acelerando',
-      subtitle: 'Resolución de Disputas',
+      headline: 'Simplifica tu',
+      subtitle: 'Gestión de Causas',
       viewFeatures: 'Ver Características',
       caseButton: 'Tengo un caso'
     },
     caseChat: {
       title: 'Envía tu caso',
-      steps: ['Ingresa tu caso', 'Adjunta evidencia', 'Cotizamos con abogados', 'Financiamos y resolvemos'],
+      steps: ['Ingresa tu caso', 'Adjunta evidencia', 'Cotizamos con abogados', 'Apoyamos y resolvemos'],
       welcomeMessage: 'Cuéntanos qué caso tienes',
       askEvidence: 'Gracias por los detalles. ¿Podrías adjuntar evidencia o documentos relevantes? También puedes compartir más detalles sobre la situación.',
       askMoreDetails: 'Gracias. ¿Hay alguna información adicional o documentos que quieras agregar?',
@@ -421,10 +435,10 @@ const translations: Record<Language, Translations> = {
     },
     features: {
       accessToInformation: 'Acceso a Información',
-      accessToFinancing: 'Acceso a Financiamiento',
+      accessToFinancing: 'Top-up de Capital',
       caseManagement: 'Gestión de Casos',
       caseManagementDesc:
-      'Flujo de trabajo centralizado para todos tus casos de disputa.',
+      'Flujo de trabajo centralizado para todos tus casos legales.',
       legalInformation: 'Información Legal',
       legalInformationDesc:
       'Base de datos completa de precedentes legales relevantes.',
@@ -436,7 +450,7 @@ const translations: Record<Language, Translations> = {
       'Evaluación automatizada de viabilidad y riesgo de casos.',
       analysis: 'Análisis',
       analysisDesc:
-      'Análisis financiero profundo para financiamiento de litigios.'
+      'Análisis e insights detallados para cada causa.'
     },
     stories: {
       title: 'Historias',
@@ -447,12 +461,12 @@ const translations: Record<Language, Translations> = {
       readFullStory: 'Leer historia completa',
       blogTitle: 'Historias y Perspectivas',
       blogSubtitle:
-      'Reflexiones sobre la evolución de la resolución de disputas, tecnología legal y el futuro del derecho.',
+      'Reflexiones sobre la evolución de la tecnología legal, gestión de casos y el futuro del derecho.',
       by: 'Por',
       shareStory: 'Compartir esta historia',
       subscribeTitle: 'Mantente Actualizado',
       subscribeSubtitle:
-      'Recibe las últimas perspectivas sobre tecnología legal y resolución de disputas en tu correo.',
+      'Recibe las últimas perspectivas sobre tecnología legal y gestión de causas en tu correo.',
       subscribePlaceholder: 'Ingresa tu correo',
       subscribeButton: 'Suscribirse',
       relatedStories: 'Historias Relacionadas',
@@ -526,14 +540,21 @@ const translations: Record<Language, Translations> = {
       constitutionalLaw: 'Derecho Constitucional'
     },
     financing: {
-      eyebrow: 'Financiamiento de Litigios',
-      title: 'Financia Tu Caso',
+      eyebrow: 'Financiamiento',
+      title: 'Financiamos tus gastos',
       subtitle:
-      'Accede a financiamiento sin recurso para litigios meritorios. Evaluamos casos en toda América Latina y proporcionamos capital para perseguir reclamos que merecen resolución.',
+      'Financiamos causas económicamente atractivas. Nuestros modelos de underwriting evalúan el mérito legal y la viabilidad económica para conectar las causas correctas con el capital adecuado.',
+      howItWorksTitle: 'Cómo funciona',
+      step1Title: 'Envíanos tu caso',
+      step1Desc: 'Cuéntanos los detalles de tu causa y el monto que necesitas financiar.',
+      step2Title: 'Análisis de underwriting',
+      step2Desc: 'Nuestros modelos identifican si la causa tiene méritos legales y es atractiva para ser financiada.',
+      step3Title: 'Te contactamos',
+      step3Desc: 'Si tu causa califica, te contactaremos a la brevedad.',
       submitCase: 'Enviar Tu Caso'
     },
     footer: {
-      tagline: 'Infraestructura legal moderna para resolución de disputas.',
+      tagline: 'Infraestructura legal moderna para la gestión de causas.',
       copyright: 'Todos los derechos reservados.',
       privacy: 'Privacidad',
       terms: 'Términos'
