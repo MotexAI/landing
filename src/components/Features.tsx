@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FolderKanbanIcon, BookOpenIcon, LineChartIcon, SearchIcon, PieChartIcon } from 'lucide-react';
+import { FolderKanbanIcon, BookOpenIcon, LineChartIcon, SearchIcon, PieChartIcon, BellIcon } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export function Features() {
@@ -11,6 +11,7 @@ export function Features() {
     { icon: LineChartIcon,    title: t.features.predictiveInformation, description: t.features.predictiveInformationDesc },
     { icon: SearchIcon,       title: t.features.caseScreening,         description: t.features.caseScreeningDesc },
     { icon: PieChartIcon,     title: t.features.analysis,              description: t.features.analysisDesc },
+    { icon: BellIcon,         title: t.features.notifications,         description: t.features.notificationsDesc },
   ];
 
   return (
@@ -44,8 +45,6 @@ export function Features() {
               </motion.div>
             );
           })}
-          {/* Empty cell to fill the 6th slot in the 3-col grid on desktop */}
-          <div className="hidden lg:block bg-[#0d1424]" aria-hidden="true" />
         </div>
       </div>
     </section>

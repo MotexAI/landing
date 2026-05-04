@@ -52,6 +52,8 @@ interface Translations {
     caseScreeningDesc: string;
     analysis: string;
     analysisDesc: string;
+    notifications: string;
+    notificationsDesc: string;
   };
   // Stories
   stories: {
@@ -245,7 +247,9 @@ const translations: Record<Language, Translations> = {
       caseScreening: 'Case Screening',
       caseScreeningDesc: 'Automated evaluation of case viability and risk.',
       analysis: 'Analysis',
-      analysisDesc: 'In-depth analytics and insights for every case.'
+      analysisDesc: 'In-depth analytics and insights for every case.',
+      notifications: 'Notifications',
+      notificationsDesc: 'Automated alerts for every deadline, hearing, and case movement. Nothing slips through.'
     },
     stories: {
       title: 'Stories',
@@ -450,7 +454,9 @@ const translations: Record<Language, Translations> = {
       'Evaluación automatizada de viabilidad y riesgo de casos.',
       analysis: 'Análisis',
       analysisDesc:
-      'Análisis e insights detallados para cada causa.'
+      'Análisis e insights detallados para cada causa.',
+      notifications: 'Notificaciones',
+      notificationsDesc: 'Alertas automáticas por cada plazo, audiencia y movimiento en tu causa. Que no se te pase ninguna fecha.'
     },
     stories: {
       title: 'Historias',
